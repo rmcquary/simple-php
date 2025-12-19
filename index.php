@@ -35,7 +35,7 @@ function handle_home() {
     echo "Welcome to the home page!";
 }
 
-function handle_about() {
+function handle_health() {
     echo "Success!";
 }
 
