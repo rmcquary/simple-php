@@ -32,7 +32,7 @@ function route_request($uri, $routes) {
 // --- Handler Functions ---
 
 function handle_home() {
-    echo "Welcome to the home page!";
+    echo "Hello, World!";
 }
 
 function handle_health() {
