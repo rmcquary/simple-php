@@ -1,9 +1,12 @@
 <?php
+require_once "memcache.php";
 
 // Define available routes and their corresponding callback functions
 $routes = [
     '/'          => 'handle_home',
     '/health'     => 'handle_health',
+    '/cache-set' => 'handle_cache_set',
+    '/cache-get' => 'handle_cache_get'
 ];
 
 // Get the current request URI and remove query parameters
@@ -37,6 +40,26 @@ function handle_home() {
 
 function handle_health() {
     echo "Success!";
+}
+
+function handle_cache_set() {
+    $value = date('Y-m-d H:i:s');
+
+    if(set("my_key", $value)) {
+        echo "Cached value: " . $value;
+    } else {
+        echo "Failed to cache value!";
+    }
+}
+
+function handle_cache_get() {
+    $value = get("my_key");
+
+    if($value){
+        echo $value;
+    } else {
+        echo "Key not found!";
+    }
 }
 
 // Run the router
