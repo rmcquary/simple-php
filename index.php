@@ -1,12 +1,14 @@
 <?php
 require_once "memcache.php";
+require_once "mysql.php";
 
 // Define available routes and their corresponding callback functions
 $routes = [
     '/'          => 'handle_home',
     '/health'     => 'handle_health',
     '/cache-set' => 'handle_cache_set',
-    '/cache-get' => 'handle_cache_get'
+    '/cache-get' => 'handle_cache_get',
+    '/db'       => 'handle_db'
 ];
 
 // Get the current request URI and remove query parameters
@@ -60,6 +62,11 @@ function handle_cache_get() {
     } else {
         echo "Key not found!";
     }
+}
+
+function handle_db()
+{
+    testConnection();
 }
 
 // Run the router
