@@ -3,10 +3,7 @@
 function createServer()
 {
     $m = new Memcached();
-
-    $m->setOption(Memcached::OPT_CLIENT_MODE, Memcached::DYNAMIC_CLIENT_MODE);
-    $m->addServer('10.251.48.67', 11211);
-
+    $m->addServer("10.251.48.68", 11211);
     return $m;
 }
 
