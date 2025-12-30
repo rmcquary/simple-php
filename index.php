@@ -8,7 +8,8 @@ $routes = [
     '/health'     => 'handle_health',
     '/cache-set' => 'handle_cache_set',
     '/cache-get' => 'handle_cache_get',
-    '/db'       => 'handle_db'
+    '/db'       => 'handle_db',
+    '/nfs'      => 'handle_nfs'
 ];
 
 // Get the current request URI and remove query parameters
@@ -67,6 +68,13 @@ function handle_cache_get() {
 function handle_db()
 {
     testConnection();
+}
+
+function handle_nfs()
+{
+    $content = file_get_contents("/mnt/files/hello.txt");
+
+    echo $content;
 }
 
 // Run the router
