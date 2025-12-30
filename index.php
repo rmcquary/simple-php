@@ -9,7 +9,8 @@ $routes = [
     '/cache-set' => 'handle_cache_set',
     '/cache-get' => 'handle_cache_get',
     '/db'       => 'handle_db',
-    '/nfs'      => 'handle_nfs'
+    '/nfs-read'      => 'handle_nfs_read',
+    '/nfs-write'      => 'handle_nfs_write'
 ];
 
 // Get the current request URI and remove query parameters
@@ -70,11 +71,21 @@ function handle_db()
     testConnection();
 }
 
-function handle_nfs()
+function handle_nfs_read()
 {
     $content = file_get_contents("/mnt/files/hello.txt");
 
     echo $content;
+}
+
+function handle_nfs_write()
+{
+    $filename = '/mnt/files/hello.txt';
+    $content = "Hello world! This content was written at: " . date('Y-m-d H:i:s');
+    // This will overwrite the file if it exists, or create it if it doesn't
+    file_put_contents($filename, $content);
+    echo "Data written to $filename successfully (overwritten/created).";
+
 }
 
 // Run the router
