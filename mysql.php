@@ -4,7 +4,7 @@ function testConnection()
 {
     // Replace with your actual values
     $db_host = '127.0.0.1'; // Use localhost if connecting via Cloud SQL Auth Proxy
-    $db_user = 'app-server@nweb-development.iam.gserviceaccount.com'; // Full IAM email address
+    $db_user = 'app-server'; // Full IAM email address
     $db_pass = ''; // Leave password empty when using auto IAM auth with the proxy
     $db_name = 'drupal';
     $db_port = '3306'; // Default port for MySQL
