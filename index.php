@@ -10,7 +10,8 @@ $routes = [
     '/cache-get' => 'handle_cache_get',
     '/db'       => 'handle_db',
     '/nfs-read'      => 'handle_nfs_read',
-    '/nfs-write'      => 'handle_nfs_write'
+    '/nfs-write'      => 'handle_nfs_write',
+    '/loaderio-4a66867f8259e64a566994d01a8d5757' => 'handle_loader'
 ];
 
 // Get the current request URI and remove query parameters
@@ -86,6 +87,10 @@ function handle_nfs_write()
     file_put_contents($filename, $content);
     echo "Data written to $filename successfully (overwritten/created).";
 
+}
+
+function handle_loader() {
+    echo "loaderio-4a66867f8259e64a566994d01a8d5757";
 }
 
 // Run the router
